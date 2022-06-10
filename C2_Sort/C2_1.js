@@ -32,10 +32,10 @@ function selectSort(arr, func) {
     let cur = 0
     let l = arr.length
     while(cur < l) {
-        let min = func(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER) > 0 ? Number.MAX_SAFE_INTEGER : Number.MIN_SAFE_INTEGER
+        let min = func(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER) < 0 ? Number.MAX_SAFE_INTEGER : Number.MIN_SAFE_INTEGER
         let min_index = -1
         for(let i = cur; i < l; i++) {
-            if(func(arr[i], min) >= 0) {
+            if(func(min, arr[i]) >= 0) {
                 min = arr[i]
                 min_index = i
             }
@@ -47,11 +47,9 @@ function selectSort(arr, func) {
 }
 
 let arr = [1, 3, 2, 5, 4]
-console.log(selectSort(arr, (item1, item2) => item2 - item1))
-console.log(selectSort(arr))
-console.log(selectSort(arr, (item1, item2) => item1 - item2))
-
-// let arr = [2, 3, 4, 1, 6, 5]
-// console.log(arr.sort((item1, item2) => item1 - item2))
-// console.log(arr)
+selectSort(arr)
+console.log(arr)
+// console.log(selectSort(arr, (item1, item2) => item2 - item1))
+// console.log(selectSort(arr))
+// console.log(selectSort(arr, (item1, item2) => item1 - item2))
 
